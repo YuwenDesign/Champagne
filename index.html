@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Champagne Photo Atlas</title>
+    <meta
+      name="description"
+      content="A quiet vintage photo atlas for a journey through Champagne."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#map">Champagne Atlas</a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#map">Map</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#cover-lab">Cover Lab</a>
+        <a href="#memory">Into Memory</a>
+        <a href="#about">About Us</a>
+      </nav>
+      <div class="bgm-player" aria-label="Background music controls">
+        <button class="bgm-toggle" type="button" data-bgm-toggle>
+          BGM off
+        </button>
+      </div>
+      <audio data-bgm-audio loop preload="none"></audio>
+    </header>
+
+    <main>
+      <section class="hero map-hero" id="map" aria-labelledby="hero-title">
+        <div class="map-title">
+          <p class="kicker">Champagne, France / Private Photo Atlas</p>
+          <h1 id="hero-title">A quiet map of green hills and old light.</h1>
+          <p>Photography copyright: HexinZhang</p>
+        </div>
+
+        <div class="paper-map" aria-label="Interactive Champagne map">
+          <svg
+            class="map-lines"
+            viewBox="0 0 900 620"
+            role="img"
+            aria-label="Minimal kraft-paper style map of Champagne"
+          >
+            <path d="M120 210 C245 138, 355 155, 465 232 S675 294, 780 215" />
+            <path d="M260 348 C382 276, 510 350, 625 318 S764 370, 805 474" />
+            <path d="M382 126 C440 230, 414 365, 488 535" />
+            <path d="M120 450 C252 382, 394 436, 548 392" />
+            <path d="M224 250 C308 272, 344 312, 402 350" />
+            <path d="M570 160 C612 216, 628 254, 690 276" />
+          </svg>
+
+          <button class="map-pin active" style="--x: 47%; --y: 58%" data-place="reims">
+            <span>Reims</span>
+          </button>
+          <button class="map-pin" style="--x: 43%; --y: 70%" data-place="epernay">
+            <span>Epernay</span>
+          </button>
+          <button class="map-pin" style="--x: 58%; --y: 67%" data-place="ay">
+            <span>Ay</span>
+          </button>
+          <button class="map-pin" style="--x: 67%; --y: 78%" data-place="troyes">
+            <span>Troyes</span>
+          </button>
+
+          <div class="map-ornament chapel" aria-hidden="true"></div>
+          <div class="map-ornament domaine" aria-hidden="true"></div>
+          <div class="map-ornament bottle" aria-hidden="true"></div>
+          <div class="map-ornament glass" aria-hidden="true"></div>
+        </div>
+
+        <aside class="place-card" aria-live="polite" data-place-card>
+          <button class="card-close" type="button" aria-label="Close place card" data-close-place>
+            x
+          </button>
+          <p class="kicker" id="place-region">Montagne de Reims</p>
+          <h2 id="place-title">Reims</h2>
+          <p id="place-note">
+            Vineyard roads, pale distance, and the first quiet green outside
+            the city.
+          </p>
+          <button class="text-button" type="button" data-jump-gallery>
+            View photographs
+          </button>
+        </aside>
+      </section>
+
+      <section class="gallery-section" id="gallery" aria-labelledby="gallery-title">
+        <div class="section-head gallery-heading">
+          <p class="kicker">Large gallery</p>
+          <h2 id="gallery-title">Photographs held in silence.</h2>
+        </div>
+
+        <div class="gallery-layout immersive-gallery">
+          <div class="gallery-main">
+            <div class="large-photo reims-one" id="large-photo"></div>
+            <div class="gallery-vignette" aria-hidden="true"></div>
+
+            <div class="toast-cursor" aria-hidden="true">
+              <span class="toast-glass left">
+                <span class="wine-fill"></span>
+              </span>
+              <span class="toast-glass right">
+                <span class="wine-fill rose"></span>
+              </span>
+            </div>
+
+            <div class="bubble-layer" aria-hidden="true"></div>
+
+            <div class="thumb-list" aria-label="Photo thumbnails"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cover-lab" id="cover-lab" aria-labelledby="cover-title">
+        <div class="section-head">
+          <p class="kicker">Cover lab</p>
+          <h2 id="cover-title">Turn one photograph into a quiet CD cover.</h2>
+        </div>
+
+        <div class="cover-layout">
+          <div class="cd-mockup">
+            <div class="cover-preview" data-cover-style="archive" id="cover-preview">
+              <div class="cover-image reims-one" id="cover-image"></div>
+              <div class="cover-type">
+                <span id="cover-artist">HexinZhang</span>
+                <strong id="cover-title-text">Champagne Field Notes</strong>
+              </div>
+              <div class="cover-spine">
+                <span id="cover-place">Reims</span>
+                <span>Private Archive</span>
+              </div>
+            </div>
+
+            <div class="cd-disc" aria-label="CD disc preview">
+              <div class="disc-art reims-one" id="disc-art"></div>
+              <div class="disc-ring"></div>
+              <svg class="disc-title-ring" viewBox="0 0 200 200" aria-hidden="true">
+                <defs>
+                  <path
+                    id="disc-title-path"
+                    d="M 100,100 m -72,0 a 72,72 0 1,1 144,0 a 72,72 0 1,1 -144,0"
+                  />
+                </defs>
+                <text>
+                  <textPath href="#disc-title-path" startOffset="0%" id="disc-ring-title">
+                    Champagne Field Notes
+                  </textPath>
+                </text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="cover-controls">
+            <div class="cover-picker" aria-label="Choose cover photograph"></div>
+            <label class="cover-field phrase-field">
+              <span>I am</span>
+              <input type="text" value="HexinZhang" data-cover-artist />
+            </label>
+            <label class="cover-field phrase-field wide">
+              <span>I feel like listening to</span>
+              <input type="text" value="Champagne Field Notes" data-cover-title />
+            </label>
+            <button class="cover-option active" type="button" data-style="archive">
+              Archive
+            </button>
+            <button class="cover-option" type="button" data-style="cellar">
+              Cellar
+            </button>
+            <button class="cover-option" type="button" data-style="noir">
+              Noir
+            </button>
+            <button class="cover-option" type="button" data-style="pastoral">
+              Pastoral
+            </button>
+            <button class="cover-option" type="button" data-style="y2k">
+              Y2K Pixel
+            </button>
+            <button class="cover-option" type="button" data-style="halftone">
+              Halftone Dots
+            </button>
+            <button class="cover-download" type="button" data-download-cover>
+              Download cover
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="memory-lab" id="memory" aria-labelledby="memory-title">
+        <div class="section-head">
+          <p class="kicker">Into memory</p>
+          <h2 id="memory-title">Tear open the present.</h2>
+        </div>
+
+        <div class="memory-stage" data-memory-stage>
+          <video class="memory-camera" data-memory-camera playsinline muted></video>
+          <video class="memory-base-video" data-memory-base-video playsinline muted loop></video>
+          <video class="memory-reveal-video" data-memory-reveal-video playsinline muted loop></video>
+          <svg class="memory-mask" aria-hidden="true">
+            <defs>
+              <clipPath id="memory-tear-clip" clipPathUnits="objectBoundingBox" data-memory-clip></clipPath>
+            </defs>
+          </svg>
+          <canvas class="memory-canvas" data-memory-canvas></canvas>
+          <div class="memory-veil" data-memory-veil></div>
+
+          <div class="memory-copy">
+            <p>Pinch your thumb and index finger, then open them to reveal a Champagne memory.</p>
+            <button class="memory-button" type="button" data-memory-start>
+              Start camera
+            </button>
+            <button class="memory-button ghost" type="button" data-memory-next>
+              Open memory
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-crew" id="about" aria-labelledby="about-title">
+        <div class="about-inner">
+          <p class="kicker">Acknowledgements</p>
+          <h2 id="about-title">Champagne Crew</h2>
+          <div class="crew-list" aria-label="Champagne Crew">
+            <p><strong>Hexin</strong> / Best Photographer / Eindhoven, the Netherlands</p>
+            <p><strong>Can</strong> / Travel Companion & Model / Gießen, Germany</p>
+            <p><strong>Tingxuan</strong> / Best Driver, video / Belval, Luxembourg</p>
+            <p><strong>Yuwen</strong> / Web Designer / Belval, Luxembourg</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Private travel archive / Champagne, France / Photography copyright: HexinZhang</span>
+      <a href="#map">Back to map</a>
+    </footer>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script defer src="script.js"></script>
+  </body>
+</html>
